@@ -1,5 +1,7 @@
 
-unit PIC12F675A;
+unit PIC12F679A;
+ 
+{$PROCESSOR PIC12F679A} 
  
 interface
 var
@@ -25,6 +27,12 @@ var
   PORTA_RA2         : bit  absolute PORTA.2;
   PORTA_RA1         : bit  absolute PORTA.1;
   PORTA_RA0         : bit  absolute PORTA.0;
+  PinA5     	    : bit  absolute PORTA.5;
+  PinA4     	    : bit  absolute PORTA.4;
+  PinA3     	    : bit  absolute PORTA.3;
+  PinA2     	    : bit  absolute PORTA.2;
+  PinA1     	    : bit  absolute PORTA.1;
+  PinA0     	    : bit  absolute PORTA.0;
   PCLATH            : byte absolute $000A;
   INTCON            : byte absolute $000B;
   INTCON_GIE        : bit  absolute INTCON.7;

@@ -1,6 +1,8 @@
 
 unit PIC12F675A;
  
+{$PROCESSOR PIC12F675A}  
+ 
 interface
 var
 // DEFINICION DE BYTES Y BITS DE ZONA MEMORIA SFR.
@@ -25,6 +27,12 @@ var
   PORTA_RA2         : bit  absolute PORTA.2;
   PORTA_RA1         : bit  absolute PORTA.1;
   PORTA_RA0         : bit  absolute PORTA.0;
+  PinA5				: bit  absolute PORTA_RA5;
+  PinA4				: bit  absolute PORTA_RA4;
+  PinA3				: bit  absolute PORTA_RA3;
+  PinA2				: bit  absolute PORTA_RA2;
+  PinA1				: bit  absolute PORTA_RA1;
+  PinA0				: bit  absolute PORTA_RA0;
   PCLATH            : byte absolute $000A;
   INTCON            : byte absolute $000B;
   INTCON_GIE        : bit  absolute INTCON.7;
@@ -64,7 +72,9 @@ var
   ADCON0_CHS0       : bit  absolute ADCON0.2;
   ADCON0_GO_DONE    : bit  absolute ADCON0.1;
   ADCON0_ASON       : bit  absolute ADCON0.0;
-  
+  TRISIO			: byte absolute $0085;
+  TRISA				: byte absolute TRISIO;
+  VRCON				: byte absolute $0099;
   EEDATA            : byte absolute $009A;
   EEADR             : byte absolute $009B;
   EECON1            : byte absolute $009C;
@@ -84,6 +94,9 @@ var
   ANSEL_ANS1        : bit  absolute ANSEL.1;
   ANSEL_ANS0        : bit  absolute ANSEL.0;
   
+
+ 
+ 
   
   /////////////////////////////////////////////////
 // Config Register
@@ -119,4 +132,28 @@ var
  
  
 implementation
+
+procedure WriteEEPROM(direccion , valor: byte);
+begin
+  EEADR       := direccion;
+  EEDATA      := valor;
+  EECON1_WREN := 1;
+  EECON2      := $55;
+  EECON2      := $AA;
+  EECON1_WR   := 1;
+  EECON1_WREN := 0;
+  repeat until (EECON1_WR = 0);
+end;
+ 
+procedure EEPROM_Read(addr:byte):byte;
+begin
+   EEADR:=addr;
+   EECON1_RD:=1;
+   exit(EEDATA);   
+end; 
+
+
+
+
+
 end.
