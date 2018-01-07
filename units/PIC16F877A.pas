@@ -7,6 +7,8 @@
 }
  
 unit PIC16F877A;
+
+{$PROCESSOR PIC16F877A} 
  
 interface
 var
@@ -32,6 +34,12 @@ var
   PORTA_RA2         : bit  absolute PORTA.2;
   PORTA_RA1         : bit  absolute PORTA.1;
   PORTA_RA0         : bit  absolute PORTA.0;
+  PinA5     	    : bit  absolute PORTA.5;
+  PinA4     	    : bit  absolute PORTA.4;
+  PinA3     	    : bit  absolute PORTA.3;
+  PinA2     	    : bit  absolute PORTA.2;
+  PinA1     	    : bit  absolute PORTA.1;
+  PinA0     	    : bit  absolute PORTA.0;
   PORTB             : byte absolute $0006;
   PORTB_RB7         : bit  absolute PORTB.7;
   PORTB_RB6         : bit  absolute PORTB.6;
@@ -41,6 +49,12 @@ var
   PORTB_RB2         : bit  absolute PORTB.2;
   PORTB_RB1         : bit  absolute PORTB.1;
   PORTB_RB0         : bit  absolute PORTB.0;
+  PinB5     	    : bit  absolute PORTB.5;
+  PinB4     	    : bit  absolute PORTB.4;
+  PinB3     	    : bit  absolute PORTB.3;
+  PinB2     	    : bit  absolute PORTB.2;
+  PinB1     	    : bit  absolute PORTB.1;
+  PinB0     	    : bit  absolute PORTB.0;
   PORTC             : byte absolute $0007;
   PORTC_RC7         : bit  absolute PORTC.7;
   PORTC_RC6         : bit  absolute PORTC.6;
@@ -50,6 +64,12 @@ var
   PORTC_RC2         : bit  absolute PORTC.2;
   PORTC_RC1         : bit  absolute PORTC.1;
   PORTC_RC0         : bit  absolute PORTC.0;
+  PinC5     	    : bit  absolute PORTC.5;
+  PinC4     	    : bit  absolute PORTC.4;
+  PinC3     	    : bit  absolute PORTC.3;
+  PinC2     	    : bit  absolute PORTC.2;
+  PinC1     	    : bit  absolute PORTC.1;
+  PinC0     	    : bit  absolute PORTC.0;
   PORTD             : byte absolute $0008;
   PORTD_RD7         : bit  absolute PORTD.7;
   PORTD_RD6         : bit  absolute PORTD.6;
@@ -59,10 +79,19 @@ var
   PORTD_RD2         : bit  absolute PORTD.2;
   PORTD_RD1         : bit  absolute PORTD.1;
   PORTD_RD0         : bit  absolute PORTD.0;
+  PinD5     	    : bit  absolute PORTD.5;
+  PinD4     	    : bit  absolute PORTD.4;
+  PinD3     	    : bit  absolute PORTD.3;
+  PinD2     	    : bit  absolute PORTD.2;
+  PinD1     	    : bit  absolute PORTD.1;
+  PinD0     	    : bit  absolute PORTD.0;
   PORTE             : byte absolute $0009;
   PORTE_RE2         : bit  absolute PORTE.2;
   PORTE_RE1         : bit  absolute PORTE.1;
   PORTE_RE0         : bit  absolute PORTE.0;
+  PinE2     	    : bit  absolute PORTE.2;
+  PinE1     	    : bit  absolute PORTE.1;
+  PinE0     	    : bit  absolute PORTE.0;
   PCLATH            : byte absolute $000A;
   INTCON            : byte absolute $000B;
   INTCON_GIE        : bit  absolute INTCON.7;

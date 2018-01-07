@@ -7,6 +7,8 @@
 }
  
 unit PIC16F876A;
+
+{$PROCESSOR PIC16F876A} 
  
 interface
 var
@@ -32,6 +34,12 @@ var
   PORTA_RA2         : bit  absolute PORTA.2;
   PORTA_RA1         : bit  absolute PORTA.1;
   PORTA_RA0         : bit  absolute PORTA.0;
+  PinA5     	    : bit  absolute PORTA.5;
+  PinA4     	    : bit  absolute PORTA.4;
+  PinA3     	    : bit  absolute PORTA.3;
+  PinA2     	    : bit  absolute PORTA.2;
+  PinA1     	    : bit  absolute PORTA.1;
+  PinA0     	    : bit  absolute PORTA.0;
   PORTB             : byte absolute $0006;
   PORTB_RB7         : bit  absolute PORTB.7;
   PORTB_RB6         : bit  absolute PORTB.6;
@@ -41,6 +49,12 @@ var
   PORTB_RB2         : bit  absolute PORTB.2;
   PORTB_RB1         : bit  absolute PORTB.1;
   PORTB_RB0         : bit  absolute PORTB.0;
+  PinB5     	    : bit  absolute PORTB.5;
+  PinB4     	    : bit  absolute PORTB.4;
+  PinB3     	    : bit  absolute PORTB.3;
+  PinB2     	    : bit  absolute PORTB.2;
+  PinB1     	    : bit  absolute PORTB.1;
+  PinB0     	    : bit  absolute PORTB.0;
   PORTC             : byte absolute $0007;
   PORTC_RC7         : bit  absolute PORTC.7;
   PORTC_RC6         : bit  absolute PORTC.6;
@@ -50,6 +64,12 @@ var
   PORTC_RC2         : bit  absolute PORTC.2;
   PORTC_RC1         : bit  absolute PORTC.1;
   PORTC_RC0         : bit  absolute PORTC.0;
+  PinC5     	    : bit  absolute PORTC.5;
+  PinC4     	    : bit  absolute PORTC.4;
+  PinC3     	    : bit  absolute PORTC.3;
+  PinC2     	    : bit  absolute PORTC.2;
+  PinC1     	    : bit  absolute PORTC.1;
+  PinC0     	    : bit  absolute PORTC.0;
   PCLATH            : byte absolute $000A;
   INTCON            : byte absolute $000B;
   INTCON_GIE        : bit  absolute INTCON.7;
@@ -237,7 +257,7 @@ var
   EECON1_RD         : bit  absolute EECON1.0;
   EECON2            : byte absolute $018D;
  
- // CONFIGURATION WORD PIC16F87XA
+// CONFIGURATION WORD PIC16F87XA
 // PIC16F873A
 // PIC16F874A
 // PIC16F876A
@@ -292,7 +312,7 @@ begin
    EEADR:=addr;
    EECON1_EEPGD:=0;
    EECON1_RD:=1;
-   Result:=EEDATA;
+   exit(EEDATA);
 end;
 
 procedure EEPROM_Write(addr,data:byte);
@@ -306,7 +326,7 @@ begin
    EECON2:=$AA;
    EECON1_WR:= 1;
    INTCON_GIE := 1;
-   While EECON1_WR do
+   While (EECON1_WR =1)do
       begin
       end;
    EECON1_WREN:= 0;
